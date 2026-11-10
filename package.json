@@ -30,13 +30,13 @@
   "dependencies": {
     "@astrojs/check": "^0.9.12",
     "@astrojs/sitemap": "^3.7.4",
-    "@tailwindcss/vite": "^4.3.4",
+    "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.7",
     "astro-icon": "^1.2.0",
     "astro-seo": "^1.2.0",
     "sharp": "^0.35.5",
     "tailwind-clamp": "^4.5.1",
-    "tailwindcss": "^4.3.4"
+    "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
