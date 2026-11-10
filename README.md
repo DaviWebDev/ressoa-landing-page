@@ -13,7 +13,7 @@ Template base para projetos Astro com pnpm, TypeScript, ESLint, Prettier, Playwr
    ./setup.bash
    ```
 
-   O assistente verifica Node.js, pnpm, Python 3, pipx e Betterleaks, instala a versão fixada do Semgrep em um ambiente Python isolado, pergunta se deseja manter o Lighthouse CI e instala a stack Node com `pnpm install --frozen-lockfile`. Instale essas ferramentas antes; o script exige as versões indicadas. Se optar por não usar Lighthouse, ele remove apenas o workflow e a configuração correspondentes. Use `pnpm add <pacote>` ou `pnpm add -D <pacote>` para adicionar outras dependências; não edite o lockfile manualmente.
+   O assistente verifica Node.js, pnpm, Python 3, pipx e Betterleaks, instala a versão fixada do Semgrep em um ambiente Python isolado e lista as dependências de produção e desenvolvimento declaradas em `package.json`. Por padrão, mantém todas; se você optar por remover dependências diretas, informe seus nomes exatos separados por espaço, e o assistente atualiza `package.json` e `pnpm-lock.yaml` antes de instalar o restante com `pnpm install --frozen-lockfile`. Se `@playwright/test` permanecer nas dependências, o assistente também baixa os navegadores do Playwright; dependências de sistema operacional dos navegadores devem ser instaladas separadamente. O assistente também pergunta se deseja manter o Lighthouse CI. Instale as ferramentas de sistema antes; o script exige as versões indicadas, mas não as instala. Se optar por não usar Lighthouse, ele remove apenas o workflow e a configuração correspondentes. Use `pnpm add <pacote>` ou `pnpm add -D <pacote>` para adicionar outras dependências; não edite o lockfile manualmente.
 
 5. **Inicie o desenvolvimento e personalize a aplicação.**
 
@@ -46,14 +46,22 @@ Template base para projetos Astro com pnpm, TypeScript, ESLint, Prettier, Playwr
 
    O Compose de desenvolvimento publica a porta `4321`; a prévia de produção publica `4322`. Docker é opcional para desenvolvimento local e não é necessário para os hooks de Betterleaks e Semgrep.
 
-9. **Revise a CI e o Dependabot.** Ajuste os workflows em `.github/workflows/` e `.github/dependabot.yml` conforme as ferramentas e políticas do projeto. A CI verifica workflows, secrets, Semgrep, lint, dependências de produção, tipos e build; os testes E2E rodam em PRs e a matriz completa roda em pushes para `main`. Se mantido pelo assistente, Lighthouse roda em um workflow separado nos pushes para `main`.
+9. **Revise a CI e o Dependabot.** Ajuste os workflows em `.github/workflows/` e `.github/dependabot.yml` conforme as ferramentas e políticas do projeto. A CI verifica workflows, secrets, Semgrep, lint, dependências de produção, tipos e build; os testes E2E rodam em PRs e a matriz completa roda em pushes para `main` quando há testes Playwright em `tests/`. Se ainda não houver testes, esses passos são ignorados. Se mantido pelo assistente, Lighthouse roda em um workflow separado nos pushes para `main`, quando o build gera arquivos HTML.
 10. **Configure as opções do GitHub em cada repositório.** Elas não são copiadas pelo template:
     - Em **Settings → General → Pull Requests**, habilite **Allow auto-merge** se quiser usar o auto-merge do Dependabot.
     - Em **Settings → Rules → Rulesets** (ou **Branches → Branch protection rules**), proteja `main`, exija pull request e os checks da CI que devem bloquear o merge. Selecione os checks após uma execução bem-sucedida; inclua `check`, `actionlint` e os jobs E2E que quiser exigir. Lighthouse roda só em `push`, então não pode ser exigido como check de PR.
     - Não configure bypass para colaboradores ou equipes que devem seguir a regra. Para impedir bypass inclusive por administradores, habilite **Do not allow bypassing** (ou a opção equivalente). Exigir PR não exige aprovação por si só; configure também o número mínimo de aprovações se quiser revisão obrigatória.
     - Hooks locais podem ser ignorados com `--no-verify`; eles são uma primeira linha de defesa, não uma barreira de segurança. A proteção da branch, com PR obrigatório e checks exigidos, impede push direto e garante as verificações antes do merge.
     - O workflow do Dependabot habilita auto-merge somente para atualizações patch e minor. Os checks obrigatórios da branch determinam quando o GitHub conclui o merge.
-    - Se mantiver o workflow Lighthouse, configure `LHCI_GITHUB_APP_TOKEN` para habilitar a integração com GitHub. Se não usar Lighthouse, o assistente remove o workflow e a configuração correspondentes.
+    - Se mantiver o workflow Lighthouse e quiser publicar os resultados como checks no GitHub, configure `LHCI_GITHUB_APP_TOKEN` em cada repositório:
+      1. Instale e autorize o [Lighthouse CI GitHub App](https://github.com/apps/lighthouse-ci) para o proprietário do repositório e selecione esse repositório. Em uma organização, pode ser necessária a aprovação de um administrador.
+      2. Copie o token exibido na página de confirmação da autorização.
+      3. No repositório, abra **Settings → Secrets and variables → Actions → New repository secret**. Use `LHCI_GITHUB_APP_TOKEN` como nome e cole o token em **Secret**.
+      4. O workflow já lê esse secret; ele roda em pushes para `main`. O token permite que o Lighthouse CI publique status checks. Não coloque o valor no código ou em arquivos versionados. Sem o token, a coleta e o upload temporário dos relatórios ainda podem rodar, mas os checks do GitHub não serão publicados.
+
+      Consulte também a [documentação oficial de configuração do Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/getting-started.md#github-app-method-recommended). Se preferir não usar o GitHub App, ela descreve a alternativa com token pessoal `LHCI_GITHUB_TOKEN`; esse nome é diferente e não corresponde ao secret usado pelo workflow deste projeto.
+
+    - Se não usar Lighthouse, o assistente remove o workflow e a configuração correspondentes.
     - A CI verifica todo o histórico com Betterleaks, enquanto os hooks verificam secrets staged no commit e o histórico completo antes do push. O Semgrep no pre-commit analisa apenas arquivos staged em `src/`; a CI analisa `src/` com severidade `WARNING`.
 
 ## Scripts úteis

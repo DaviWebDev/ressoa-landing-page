@@ -23,6 +23,16 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - id: html
+        name: Check for generated HTML
+        run: |
+          if find dist -type f -name '*.html' -print -quit | grep -q .; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
       - run: pnpm dlx @lhci/cli@0.15.x autorun
+        if: steps.html.outputs.available == 'true'
+        name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
