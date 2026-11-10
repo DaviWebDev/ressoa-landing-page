@@ -56,6 +56,7 @@ jobs:
 
   # ── PR: lightweight ──
   e2e-pr:
+    name: E2E (${{ matrix.project }})
     if: github.event_name == 'pull_request'
     needs: [check]
     timeout-minutes: 10

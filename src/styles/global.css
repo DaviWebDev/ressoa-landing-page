@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "tailwind-clamp";
+
+@layer base {
+  html {
+    font-size: 100%;
+  }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}

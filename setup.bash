@@ -106,6 +106,62 @@ if [[ "$has_lighthouse_workflow" != "$has_lighthouse_config" ]]; then
   exit 1
 fi
 
+printf 'Dependências diretas declaradas em package.json:\n'
+node <<'NODE'
+const { dependencies = {}, devDependencies = {} } = require("./package.json");
+
+for (const [label, packages] of [
+  ["Produção", dependencies],
+  ["Desenvolvimento", devDependencies],
+]) {
+  console.log(`\n${label}:`);
+  for (const [name, version] of Object.entries(packages)) {
+    console.log(`  ${name}@${version}`);
+  }
+}
+NODE
+printf '\n'
+
+remove_prod=()
+remove_dev=()
+if [[ -t 0 ]]; then
+  printf 'Deseja remover alguma dependência antes da instalação? [y/N] '
+  if ! IFS= read -r remove_dependencies; then
+    printf '\nErro: não foi possível ler a resposta.\n' >&2
+    exit 1
+  fi
+
+  case "$remove_dependencies" in
+    [yY]|[yY][eE][sS])
+      printf 'Informe os nomes exatos separados por espaço. A remoção altera package.json e pnpm-lock.yaml.\n'
+      printf 'Dependências para remover: '
+      if ! IFS= read -r dependencies_to_remove; then
+        printf '\nErro: não foi possível ler a lista de dependências.\n' >&2
+        exit 1
+      fi
+
+      read -r -a requested_removals <<< "$dependencies_to_remove"
+      for package in "${requested_removals[@]}"; do
+        if ! node -e 'const p=require("./package.json"); process.exit([...Object.keys(p.dependencies ?? {}), ...Object.keys(p.devDependencies ?? {})].includes(process.argv[1]) ? 0 : 1)' "$package"; then
+          printf 'Erro: %s não é uma dependência direta de package.json.\n' "$package" >&2
+          exit 1
+        fi
+
+        if node -e 'process.exit(Object.hasOwn(require("./package.json").dependencies ?? {}, process.argv[1]) ? 0 : 1)' "$package"; then
+          remove_prod+=("$package")
+        else
+          remove_dev+=("$package")
+        fi
+      done
+      ;;
+    *)
+      printf 'Todas as dependências serão mantidas.\n'
+      ;;
+  esac
+else
+  printf 'Sem terminal interativo: todas as dependências serão mantidas.\n'
+fi
+
 keep_lighthouse=false
 if [[ "$has_lighthouse_workflow" == true ]]; then
   if [[ ! -t 0 ]]; then
@@ -133,7 +189,33 @@ else
   printf 'Lighthouse CI já está desabilitado neste projeto.\n'
 fi
 
+if ((${#remove_prod[@]})); then
+  pnpm remove --lockfile-only --save-prod "${remove_prod[@]}"
+fi
+if ((${#remove_dev[@]})); then
+  pnpm remove --lockfile-only --save-dev "${remove_dev[@]}"
+fi
+
+printf '\nDependências que serão instaladas após as remoções selecionadas:\n'
+node <<'NODE'
+const { dependencies = {}, devDependencies = {} } = require("./package.json");
+
+for (const [label, packages] of [
+  ["Produção", dependencies],
+  ["Desenvolvimento", devDependencies],
+]) {
+  console.log(`\n${label}:`);
+  for (const [name, version] of Object.entries(packages)) {
+    console.log(`  ${name}@${version}`);
+  }
+}
+NODE
+
 pnpm install --frozen-lockfile
+
+if node -e 'const p=require("./package.json"); process.exit(p.devDependencies?.["@playwright/test"] ? 0 : 1)'; then
+  pnpm exec playwright install
+fi
 
 if [[ "$keep_lighthouse" == true ]]; then
   printf 'Lighthouse CI habilitado. Configure LHCI_GITHUB_APP_TOKEN nos secrets do repositório se usar a integração com GitHub.\n'
