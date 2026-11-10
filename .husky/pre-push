@@ -1,0 +1,3 @@
+pnpm exec astro check
+pnpm lint
+betterleaks git --redact --verbose

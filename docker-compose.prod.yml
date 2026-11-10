@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    ports:
+      - "4322:80"

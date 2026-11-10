@@ -1,0 +1,67 @@
+{
+  "name": "astro-starter",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "packageManager": "pnpm@12.16.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "audit": "pnpm audit --audit-level=high",
+    "audit:prod": "pnpm audit --prod --audit-level=high",
+    "security:scan": "if [ -d src ]; then semgrep scan --config=auto src/ --severity=WARNING --error; else echo 'No src/ directory; skipping Semgrep scan.'; fi",
+    "docker:no-cache": "docker compose build --pull --no-cache app",
+    "docker:preview": "docker compose -f docker-compose.prod.yml up --build --detach",
+    "docker:rebuild": "docker compose -f docker-compose.prod.yml build --pull --no-cache && docker compose -f docker-compose.prod.yml up --detach",
+    "docker:stop-prod": "docker compose -f docker-compose.prod.yml down",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\"",
+    "lint": "eslint --max-warnings=0 \"**/*.{js,mjs,cjs,ts,astro}\"",
+    "PW:test-full": "pnpm exec playwright test && pnpm exec playwright show-report",
+    "PW:test-partial": "pnpm exec playwright test",
+    "PW:report": "pnpm exec playwright show-report",
+    "PW:ui": "pnpm exec playwright test --ui",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.7",
+    "astro-icon": "^1.2.0",
+    "astro-seo": "^1.2.0",
+    "sharp": "^0.35.5",
+    "tailwind-clamp": "^4.5.1",
+    "tailwindcss": "^4.3.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.14.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-security": "^4.2.1",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.2",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.72.1"
+  },
+  "lint-staged": {
+    "**/*.{ts,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{js,jsx,tsx,md,mdx,css,json}": "prettier --write"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

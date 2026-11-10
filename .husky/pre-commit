@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if [ -z "${BASH_VERSION:-}" ]; then
+  exec bash "$0" "$@"
+fi
+
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+pnpm exec lint-staged
+betterleaks git --pre-commit --staged --redact --verbose
+
+mapfile -d '' -t staged_source_files < <(
+  git diff --cached --name-only --diff-filter=ACMR -z -- src/
+)
+
+if ((${#staged_source_files[@]})); then
+  scan_dir="$(mktemp -d)"
+  trap 'rm -rf -- "$scan_dir"' EXIT
+
+  git checkout-index --prefix="$scan_dir/" -- "${staged_source_files[@]}"
+  semgrep scan --config=auto --error --quiet --skip-unknown-extensions "$scan_dir/src/"
+fi
