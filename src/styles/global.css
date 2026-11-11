@@ -1,12 +1,33 @@
 @import "tailwindcss";
 @plugin "tailwind-clamp";
 
+@theme {
+  --color-primary: #222b26;
+  --color-orange-theme: #b7492d;
+  --color-text-pewter-green: #5c6259;
+  --color-border-light-gray: #cbcdc2;
+  --color-bg-accordion-card: #dde3d4;
+  --color-bg-faq: #e9e8df;
+  --color-text-footer: #c5cbbf;
+}
+
 @layer base {
   html {
     font-size: 100%;
   }
+
   body {
+    font-family: var(--manrope);
     min-height: 100vh;
     min-height: 100dvh;
+  }
+
+  h2 {
+    color: var(--color-primary);
+  }
+
+  p,
+  span {
+    color: var(--color-text-pewter-green);
   }
 }
