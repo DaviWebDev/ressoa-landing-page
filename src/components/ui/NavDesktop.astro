@@ -1,0 +1,55 @@
+---
+import type { Data } from "./NavMobile.astro";
+
+interface Props {
+  item: Data[];
+}
+
+const { item } = Astro.props;
+---
+
+<nav aria-label="Opções de navegação">
+  <ul class="flex gap-8 clamp-[text,1rem,1.1rem] font-medium">
+    {item.map(({ label, href }) => (
+      <li>
+        <a href={href} class="nav-link">
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scale(1);
+  }
+
+  .nav-link:hover {
+    color: var(--color-orange-theme);
+  }
+
+  @media (width < 64rem) {
+    nav {
+      display: none;
+    }
+  }
+</style>

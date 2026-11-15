@@ -1,0 +1,214 @@
+---
+/*Astro Components*/
+import { Icon } from "astro-icon/components";
+/*Components*/
+import NavMobile from "../ui/NavMobile.astro";
+/*Images*/
+import Logo from "../../assets/images/ressoa-logo.svg";
+import NavDesktop from "../ui/NavDesktop.astro";
+
+const navItems = [
+  {
+    num: 1,
+    label: "Soluções",
+    href: "#solucoes",
+  },
+  {
+    num: 2,
+    label: "Nosso método",
+    href: "#metodo",
+  },
+  {
+    num: 3,
+    label: "Projeto",
+    href: "#projeto",
+  },
+  {
+    num: 4,
+    label: "Dúvidas",
+    href: "#duvidas",
+  },
+];
+---
+
+<header class="header flex justify-center sticky top-0 z-101 w-full h-25">
+  <div class="header__inner flex items-center justify-between w-full max-w-400">
+    <a href="/" aria-label="Logo ressoa">
+      <Logo width="145" height="45" />
+    </a>
+    <NavDesktop item={navItems} />
+    <div class="header__actions flex gap-5">
+      <a href="#contato" class="header__actions-contact" data-js="contact-link">
+        Vamos conversar <Icon name="arrow" class="text-xs" />
+      </a>
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-label="Abrir menu de navegação"
+        aria-controls="primary-navigation"
+        class="flex items-center gap-3 min-w-26 p-3 font-semibold border border-light-gray rounded-md cursor-pointer lg:hidden"
+        data-open="false"
+        data-js="toggle-menu"
+      >
+        <span class="menu-label" aria-hidden="true">
+          <span class="menu-label__closed">Menu</span>
+          <span class="menu-label__open">Fechar</span>
+        </span>
+        <span class="hamburguer-menu__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+    <NavMobile item={navItems} />
+  </div>
+</header>
+
+<style>
+  .header {
+    padding-inline: 1rem;
+    box-shadow: 0 2px 8px -2px rgba(0 0 0 / 5%);
+  }
+
+  .header__actions-contact {
+    display: none;
+  }
+
+  .hamburguer-menu__bar,
+  .hamburguer-menu__bar::before,
+  .hamburguer-menu__bar::after {
+    display: block;
+    width: 1.1rem;
+    height: 0.15rem;
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .hamburguer-menu__bar {
+    position: relative;
+  }
+
+  .hamburguer-menu__bar::before,
+  .hamburguer-menu__bar::after {
+    content: "";
+    position: absolute;
+  }
+
+  .hamburguer-menu__bar::before {
+    top: -7px;
+  }
+
+  .hamburguer-menu__bar::after {
+    top: 7px;
+  }
+
+  .header:has(.nav-menu--open) .hamburguer-menu__bar {
+    background-color: transparent;
+  }
+
+  .header:has(.nav-menu--open) .hamburguer-menu__bar::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header:has(.nav-menu--open) .hamburguer-menu__bar::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .menu-label {
+    display: grid;
+    font-size: 0.95rem;
+  }
+
+  .menu-label > span {
+    grid-area: 1 / 1;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .menu-label__open {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+
+  [data-js="toggle-menu"][data-open="true"] .menu-label__closed {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  [data-js="toggle-menu"][data-open="true"] .menu-label__open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-label > span {
+      transition: none;
+    }
+
+    .hamburguer-menu__bar,
+    .hamburguer-menu__bar::before,
+    .hamburguer-menu__bar::after {
+      transition: none;
+    }
+
+    .header__actions-contact {
+      transition: none;
+    }
+
+    .header__actions-contact::before {
+      transition: none;
+    }
+  }
+
+  @media (width >= 52.125rem) {
+    .header {
+      padding-inline: 3rem;
+    }
+
+    .header__actions-contact {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+      isolation: isolate;
+      padding: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 0.375rem;
+      opacity: 1;
+      transform: scale(1);
+      transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+    }
+
+    .header__actions-contact::before,
+    .header__actions-contact:focus-visible::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .header__actions-contact:hover::before,
+    .header__actions-contact:focus-visible::before {
+      opacity: 1;
+    }
+
+    .header__actions-contact:hover {
+      transform: scale(1.05);
+    }
+
+    .header__actions-contact.isHidden {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script src="../../scripts/header.ts"></script>

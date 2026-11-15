@@ -1,0 +1,120 @@
+---
+/*Astro Components*/
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+/*Images*/
+import lounge from "../../assets/images/lounge-menu.png";
+
+export interface Data {
+  num: number;
+  label: string;
+  href: string;
+}
+
+interface Props {
+  item: Data[];
+}
+const { item } = Astro.props;
+---
+
+<nav
+  data-js="nav-menu"
+  id="primary-navigation"
+  aria-label="Opções de navegação"
+  class="nav"
+  inert
+>
+  <div class="flex flex-col gap-10 size-full">
+    <p class="font-bold text-xs text-orange-theme">EXPLORE O ESTÚDIO</p>
+    <ul class="flex flex-col gap-10">
+      {item.map(({ num, label, href }: Data) => (
+        <li class="pb-5 border-b border-light-gray">
+          <a
+            href={href}
+            class="flex items-center text-3xl text-primary font-medium"
+          >
+            <span class="pr-5 text-[1.05rem] font-semibold text-orange-theme">
+              0{num}
+            </span>
+            {label}
+            <Icon name="arrow" class="ms-auto text-sm" />
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="flex flex-col gap-5 mt-auto">
+      <p class="max-w-70 text-xl">
+        Seu próximo espaço começa com uma boa conversa.
+      </p>
+      <a
+        href="#contato"
+        class="flex justify-between items-center w-full max-w-100 h-15 px-5 text-white text-lg font-semibold bg-orange-theme rounded-md"
+      >
+        Vamos conversar <Icon name="arrow" class="text-white text-sm" />
+      </a>
+      <a href="mailto:oi@ressoa.studio">oi@ressoa.studio</a>
+    </div>
+  </div>
+  <div class="hidden">
+    <div>
+      <Image
+        src={lounge}
+        alt=""
+        layout="constrained"
+        quality={80}
+        class="aspect-76/115 w-full"
+        fit="cover"
+      />
+    </div>
+    <div class="flex flex-col gap-5 mt-auto">
+      <p class="max-w-60 text-primary text-3xl">Menos ruído. Mais presença.</p>
+      <p class="max-w-50 font-semibold text-xs">
+        ARQUITETURA PARA VER. CONFORTO PARA SENTIR.
+      </p>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    gap: 3rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 6.25rem);
+    height: calc(100dvh - 6.25rem);
+    padding: 1rem 1rem 2rem 1rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background-color: white;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.3s ease;
+  }
+
+  .nav.nav-menu--open {
+    clip-path: inset(0 0 0 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav {
+      transition: none;
+    }
+  }
+
+  @media (width >= 52.125rem) {
+    .nav {
+      padding: 3rem 3rem 2rem 3rem;
+    }
+
+    .nav div:first-child {
+      flex: 1;
+    }
+
+    .nav div:last-child {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+</style>
