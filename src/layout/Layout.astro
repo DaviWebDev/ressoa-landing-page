@@ -50,5 +50,8 @@ const canonicalUrl = new URL(canonicalPath, Astro.site).href;
   </head>
   <body>
     <Header />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

@@ -9,6 +9,7 @@
   --color-pale-gray: #dde3d4;
   --color-off-white: #e9e8df;
   --color-seashell3: #c5cbbf;
+  --breakpoint-3xl: 106.25rem;
 }
 
 @layer base {
@@ -29,5 +30,9 @@
   p,
   span {
     color: var(--color-text-pewter-green);
+  }
+
+  .no-scroll {
+    overflow: hidden;
   }
 }
