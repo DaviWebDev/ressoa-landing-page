@@ -11,6 +11,9 @@ test("mobile navigation opens and closes", async ({ page }) => {
   await expect(menuButton).toHaveAttribute("aria-expanded", "false");
   await expect(navMenu).toHaveJSProperty("inert", true);
 
+  await page.evaluate(() => window.scrollTo(0, 300));
+  const scrollYBeforeOpening = await page.evaluate(() => window.scrollY);
+
   await menuButton.click();
 
   await expect(menuButton).toHaveAttribute("aria-expanded", "true");
@@ -20,6 +23,19 @@ test("mobile navigation opens and closes", async ({ page }) => {
   );
   await expect(navMenu).toHaveJSProperty("inert", false);
   await expect(navMenu).toHaveClass(/nav-menu--open/);
+
+  const buttonBox = await menuButton.boundingBox();
+  if (!buttonBox) {
+    throw new Error("Menu button is not visible");
+  }
+  await page.mouse.move(
+    buttonBox.x + buttonBox.width / 2,
+    buttonBox.y + buttonBox.height / 2,
+  );
+  await page.mouse.wheel(0, 500);
+  await expect
+    .poll(() => page.evaluate(() => window.scrollY))
+    .toBe(scrollYBeforeOpening);
 
   await menuButton.click();
 
