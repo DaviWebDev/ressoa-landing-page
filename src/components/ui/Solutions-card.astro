@@ -1,0 +1,35 @@
+---
+/*Astro Components*/
+import { Icon } from "astro-icon/components";
+/*Data*/
+import type { Item } from "../../data/solutions.ts";
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.map(({ num, tag, title, text, link, theme, border, textColor }) => (
+  <li>
+    <article
+      class={`flex flex-col gap-5 min-w-60 p-8 border border-light-gray rounded-2xl ${theme ? theme : ""}`}
+    >
+      <div class="flex justify-between">
+        <span class="">{num}</span>
+        <p class="font-semibold">{tag}</p>
+      </div>
+      <div
+        class={`flex flex-col gap-5 pb-6 border-b ${border ? border : "border-light-gray"}`}
+      >
+        <h3 class="clamp-[text,1.7rem,2.2rem]">{title}</h3>
+        <p class={`${textColor ? textColor : ""}`}>{text}</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="clamp-[text,0.8rem,1rem] font-semibold">{link}</span>
+        <Icon name="arrow" class="text-sm" />
+      </div>
+    </article>
+  </li>
+))}

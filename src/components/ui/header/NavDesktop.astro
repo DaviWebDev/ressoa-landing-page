@@ -47,6 +47,13 @@ const { item } = Astro.props;
     color: var(--color-orange-theme);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link,
+    .nav-link::after {
+      transition: none;
+    }
+  }
+
   @media (width < 64rem) {
     nav {
       display: none;
