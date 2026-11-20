@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://localhost/sitemap-index.xml
+Sitemap: https://ressoa-landing-page.vercel.app/sitemap-index.xml

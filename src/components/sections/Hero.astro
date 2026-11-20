@@ -32,7 +32,7 @@ const desktopImg = await imageOptimize(loungeDesktop);
       <div class="flex gap-5">
         <a
           href="#solucoes"
-          class="flex justify-center items-center gap-2 clamp-[w,15rem,18rem] h-15 text-white font-semibold bg-orange-theme rounded-lg"
+          class="btn flex justify-center items-center gap-2 clamp-[w,15rem,18rem] h-15 text-white font-semibold bg-orange-theme rounded-lg"
         >
           Encontrar minha solução <Icon name="arrow" class="text-xl" />
         </a>
@@ -74,7 +74,7 @@ const desktopImg = await imageOptimize(loungeDesktop);
           fetchpriority="high"
         />
       </picture>
-      <div class="flex justify-between clamp-[text,0.8rem,1rem]">
+      <div class="flex justify-between clamp-[text,0.9rem,1rem]">
         <p>01 / O conforto também se ouve.</p>
         <p class="text-orange-theme font-semibold">RESSOA</p>
       </div>
@@ -104,3 +104,29 @@ const desktopImg = await imageOptimize(loungeDesktop);
     </div>
   </div>
 </section>
+
+<style>
+  .btn {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .btn:active {
+    transform: scale(0.95);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+
+    .btn:hover,
+    .btn:active {
+      transform: none;
+    }
+  }
+</style>

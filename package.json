@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/sitemap": "^3.7.6",
     "@tailwindcss/vite": "^4.3.5",
-    "astro": "^7.4.11",
+    "astro": "^7.4.13",
     "astro-icon": "^1.2.0",
     "astro-seo": "^1.2.0",
     "sharp": "^0.35.5",
@@ -40,19 +40,19 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.65.0",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "eslint": "^10.14.0",
+    "eslint": "^10.15.0",
     "eslint-plugin-astro": "^3.2.1",
     "eslint-plugin-security": "^4.2.1",
     "globals": "^17.14.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.6.0",
+    "lint-staged": "^17.6.1",
     "prettier": "3.10.1",
     "prettier-plugin-astro": "1.1.2",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "typescript-eslint": "^8.72.2"
+    "typescript-eslint": "^8.73.0"
   },
   "lint-staged": {
     "**/*.{ts,astro}": [
