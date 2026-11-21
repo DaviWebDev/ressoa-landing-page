@@ -2,10 +2,10 @@
 /*Astro Components*/
 import { Icon } from "astro-icon/components";
 /*Components*/
-import NavMobile from "../ui/NavMobile.astro";
+import NavMobile from "../ui/header/NavMobile.astro";
+import NavDesktop from "../ui/header/NavDesktop.astro";
 /*Images*/
 import Logo from "../../assets/images/ressoa-logo.svg";
-import NavDesktop from "../ui/NavDesktop.astro";
 
 const navItems = [
   {
@@ -159,6 +159,10 @@ const navItems = [
 
     .header__actions-contact::before {
       transition: none;
+    }
+
+    .header__actions-contact:hover {
+      transform: none;
     }
   }
 
