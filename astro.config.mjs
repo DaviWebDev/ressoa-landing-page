@@ -8,6 +8,9 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always",
   },
+  security: {
+    csp: true,
+  },
   server: {
     host: true,
   },
