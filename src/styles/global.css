@@ -11,6 +11,7 @@
   --color-seashell3: #c5cbbf;
   --color-champagne: #eacbb8;
   --breakpoint-3xl: 106.25rem;
+  --breakpoint-2md: 52.125rem;
 }
 
 @layer base {
