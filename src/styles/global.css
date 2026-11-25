@@ -20,18 +20,10 @@
   }
 
   body {
-    font-family: var(--manrope);
     min-height: 100vh;
     min-height: 100dvh;
-  }
-
-  h2 {
     color: var(--color-primary);
-  }
-
-  p,
-  span {
-    color: var(--color-text-pewter-green);
+    font-family: var(--manrope);
   }
 
   .no-scroll {

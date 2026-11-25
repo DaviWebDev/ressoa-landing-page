@@ -1,0 +1,115 @@
+---
+import { processData } from "../../data/process.ts";
+---
+
+<section class="flex flex-col gap-5 w-full max-w-400 px-4 md:px-12 3xl:mx-auto 3xl:px-0">
+  <header class="flex flex-col gap-2 md:flex-row md:items-center md:gap-10 md:justify-between">
+    <div class="flex flex-col gap-5 font-semibold">
+      <p class="text-base text-orange-theme">03 / NOSSO MÉTODO</p>
+      <h2 class="clamp-[text,1.9rem,2.8rem] font-medium">
+        Primeiro, a gente escuta.
+      </h2>
+    </div>
+    <p class="flex-1 text-pewter-green md:pt-8 md:max-w-100">
+      Um caminho claro, da primeira conversa ao espaço pronto para ser vivido.
+    </p>
+  </header>
+  <div class="flex flex-col gap-5">
+    {processData.map(({ num, title, describe, complement }) => (
+      <details class="p-5 bg-pale-gray">
+        <summary class="flex items-center clamp-[text,1.1rem,1.5rem]">
+          <span class="pr-5 text-3xl">{num}</span> {title}{" "}
+          <span class="relative inline-block w-4 h-0.5 ms-auto bg-primary"></span>
+        </summary>
+        <div class="flex flex-col gap-5 pt-5">
+          <p class="clamp-[text,1.1rem,1.2rem]">{describe}</p>
+          <p class="font-semibold text-pewter-green clamp-[text,0.8rem,1rem]">
+            {complement}
+          </p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  details {
+    border-radius: 0.8rem;
+  }
+
+  details summary {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  details[open] summary {
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+
+  span {
+    color: var(--color-pewter-green);
+    transition: color 0.2s ease;
+  }
+
+  details[open] span {
+    color: var(--color-orange-theme);
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary span:last-child::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: rotate(90deg) translateY(-50%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  details[open] summary span:last-child::after {
+    opacity: 0;
+  }
+
+  @layer utilities {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+
+    details::details-content {
+      height: 0;
+      overflow: clip;
+      clip-path: inset(0 0 100% 0);
+      transition:
+        height 0.3s ease,
+        clip-path 0.3s ease,
+        content-visibility 0.3s ease allow-discrete;
+    }
+
+    details[open]::details-content {
+      height: auto;
+      clip-path: inset(0 0 0 0);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      details::details-content {
+        transition:
+          height 0.3s ease,
+          clip-path 0.3s ease,
+          content-visibility 0.3s ease allow-discrete;
+      }
+    }
+  }
+</style>
