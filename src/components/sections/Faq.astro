@@ -1,0 +1,116 @@
+---
+/*Data*/
+import { faqData } from "../../data/faq.ts";
+---
+
+<section class="flex justify-center px-4 py-20 bg-off-white md:px-12 3xl:px-0">
+  <div class="flex flex-col gap-10 w-full max-w-400 xl:flex-row xl:justify-between">
+    <header class="flex flex-col gap-5">
+      <div class="flex flex-col gap-8">
+        <p class="text-base font-semibold text-orange-theme">
+          04 / ANTES DE COMEÇAR
+        </p>
+        <h2 class="clamp-[text,2rem,2.8rem] font-medium leading-10">
+          Pode perguntar.
+          <br />A gente traduz.
+        </h2>
+      </div>
+      <p class="text-pewter-green">
+        Acústica não precisa ser um assunto complicado.
+      </p>
+    </header>
+    <ul class="flex flex-col gap-5 pt-5 border-t border-t-pewter-green/50 xl:flex-1 xl:w-full xl:max-w-220">
+      {faqData.map(({ title, text }) => (
+        <li class="py-5">
+          <details>
+            <summary class="flex gap-10 justify-between items-center clamp-[text,1.1rem,1.5rem] font-semibold">
+              {title}{" "}
+              <span class="inline-block relative w-4 min-w-4 h-0.5 ms-auto bg-primary"></span>
+            </summary>
+            <p class="text-pewter-green">{text}</p>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  details {
+    border-radius: 0.8rem;
+  }
+
+  details summary {
+    padding-bottom: 0.5rem;
+  }
+
+  span {
+    color: var(--color-pewter-green);
+    transition: color 0.2s ease;
+  }
+
+  details[open] span {
+    color: var(--color-orange-theme);
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary span:last-child::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: rotate(90deg) translateY(-50%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  details[open] summary span:last-child::after {
+    opacity: 0;
+  }
+
+  ul li {
+    border-bottom: 1px solid rgba(92, 98, 89, 0.5);
+  }
+
+  @layer utilities {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+
+    details::details-content {
+      height: 0;
+      overflow: clip;
+      clip-path: inset(0 0 100% 0);
+      transition:
+        height 0.3s ease,
+        clip-path 0.3s ease,
+        content-visibility 0.3s ease allow-discrete;
+    }
+
+    details[open]::details-content {
+      height: auto;
+      clip-path: inset(0 0 0 0);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      details::details-content {
+        transition:
+          height 0.3s ease,
+          clip-path 0.3s ease,
+          content-visibility 0.3s ease allow-discrete;
+      }
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 services:
   app:
+    image: ressoa-landing-page-prod
     build:
       context: .
       target: prod
