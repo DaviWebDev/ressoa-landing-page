@@ -6,7 +6,7 @@ import { processData } from "../../data/process.ts";
   <header class="flex flex-col gap-2 md:flex-row md:items-center md:gap-10 md:justify-between">
     <div class="flex flex-col gap-5 font-semibold">
       <p class="text-base text-orange-theme">03 / NOSSO MÉTODO</p>
-      <h2 class="clamp-[text,1.9rem,2.8rem] font-medium">
+      <h2 class="clamp-[text,2rem,2.8rem] font-medium leading-10">
         Primeiro, a gente escuta.
       </h2>
     </div>
@@ -14,22 +14,24 @@ import { processData } from "../../data/process.ts";
       Um caminho claro, da primeira conversa ao espaço pronto para ser vivido.
     </p>
   </header>
-  <div class="flex flex-col gap-5">
+  <ul class="flex flex-col gap-5">
     {processData.map(({ num, title, describe, complement }) => (
-      <details class="p-5 bg-pale-gray">
-        <summary class="flex items-center clamp-[text,1.1rem,1.5rem]">
-          <span class="pr-5 text-3xl">{num}</span> {title}{" "}
-          <span class="relative inline-block w-4 h-0.5 ms-auto bg-primary"></span>
-        </summary>
-        <div class="flex flex-col gap-5 pt-5">
-          <p class="clamp-[text,1.1rem,1.2rem]">{describe}</p>
-          <p class="font-semibold text-pewter-green clamp-[text,0.8rem,1rem]">
-            {complement}
-          </p>
-        </div>
-      </details>
+      <li>
+        <details class="p-5 bg-pale-gray">
+          <summary class="flex items-center clamp-[text,1.1rem,1.5rem]">
+            <span class="pr-5 text-3xl">{num}</span> {title}{" "}
+            <span class="relative inline-block w-4 h-0.5 ms-auto bg-primary"></span>
+          </summary>
+          <div class="flex flex-col gap-5 pt-5">
+            <p class="clamp-[text,1.1rem,1.2rem]">{describe}</p>
+            <p class="font-semibold text-pewter-green clamp-[text,0.8rem,1rem]">
+              {complement}
+            </p>
+          </div>
+        </details>
+      </li>
     ))}
-  </div>
+  </ul>
 </section>
 
 <style>
