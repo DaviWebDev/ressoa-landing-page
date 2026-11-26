@@ -4,9 +4,7 @@ export interface Item {
   title: string;
   text: string;
   link: string;
-  theme?: string;
-  border?: string;
-  textColor?: string;
+  className?: string;
 }
 
 export const solutionsData: Item[] = [
@@ -23,7 +21,7 @@ export const solutionsData: Item[] = [
     title: "Técnica com sensibilidade.",
     text: "Desenhamos soluções junto da arquitetura: proporção, textura e desempenho na mesma conversa.",
     link: "ESTUDO + DETALHAMENTO",
-    theme: "bg-pale-gray",
+    className: "project",
   },
   {
     num: "03",
@@ -31,8 +29,7 @@ export const solutionsData: Item[] = [
     title: "Cada superfície importa.",
     text: "Madeira, feltro e fibras escolhidos pela função e pelo toque. Nada de revestir tudo por revestir.",
     link: "AMOSTRAS + ESPECIFICAÇÃO",
-    theme: "bg-champagne",
-    border: "border-primary/50",
+    className: "curation",
   },
   {
     num: "04",
@@ -40,8 +37,6 @@ export const solutionsData: Item[] = [
     title: "Do desenho ao último ajuste.",
     text: "Orientamos a instalação e conferimos o resultado. Conforto não termina na entrega do projeto.",
     link: "OBRA + ESCUTA FINAL",
-    theme: "text-white bg-primary",
-    border: "border-light-gray/75",
-    textColor: "text-seashell3",
+    className: "follow-up",
   },
 ];

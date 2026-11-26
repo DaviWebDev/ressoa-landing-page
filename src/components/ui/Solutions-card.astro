@@ -11,20 +11,18 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-{items.map(({ num, tag, title, text, link, theme, border, textColor }) => (
+{items.map(({ num, tag, title, text, link, className }) => (
   <li>
     <article
-      class={`flex flex-col gap-5 min-w-60 p-8 border border-light-gray rounded-2xl ${theme ? theme : ""}`}
+      class={`flex flex-col gap-5 min-w-60 p-8 ${className} border border-light-gray rounded-2xl`}
     >
       <div class="flex justify-between">
-        <span class="">{num}</span>
+        <span>{num}</span>
         <p class="font-semibold">{tag}</p>
       </div>
-      <div
-        class={`flex flex-col gap-5 pb-6 border-b ${border ? border : "border-light-gray"}`}
-      >
+      <div class="flex flex-col gap-5 pb-6 border-b border-light-gray">
         <h3 class="clamp-[text,1.7rem,2.2rem]">{title}</h3>
-        <p class={`${textColor ? textColor : ""}`}>{text}</p>
+        <p>{text}</p>
       </div>
       <div class="flex items-center gap-2">
         <span class="clamp-[text,0.8rem,1rem] font-semibold">{link}</span>
@@ -33,3 +31,34 @@ const { items } = Astro.props;
     </article>
   </li>
 ))}
+
+<style>
+  h3 ~ p {
+    color: var(--color-pewter-green);
+  }
+
+  .project {
+    background-color: var(--color-pale-gray);
+  }
+
+  .curation {
+    background-color: var(--color-champagne);
+  }
+
+  .curation div:nth-child(2) {
+    border-color: #222b2679;
+  }
+
+  .curation div:nth-child(2) p {
+    color: var(--color-primary);
+  }
+
+  .follow-up {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
+  .follow-up div:nth-child(2) p {
+    color: var(--color-seashell3);
+  }
+</style>
