@@ -1,5 +1,27 @@
 import { expect, test } from "@playwright/test";
 
+test("same-page navigation links target sections and scroll smoothly", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const samePageLinksResolve = await page
+    .locator('a[href^="#"]')
+    .evaluateAll((links) =>
+      links.every((link) => {
+        const id = (link as HTMLAnchorElement).hash.slice(1);
+        return id.length > 0 && document.getElementById(id) !== null;
+      }),
+    );
+
+  expect(samePageLinksResolve).toBe(true);
+  await expect(page.locator("html")).toHaveCSS("scroll-behavior", "smooth");
+  await expect(page.locator("#solucoes")).toHaveCSS(
+    "scroll-margin-top",
+    "100px",
+  );
+});
+
 test("mobile navigation opens and closes", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
@@ -11,7 +33,10 @@ test("mobile navigation opens and closes", async ({ page }) => {
   await expect(menuButton).toHaveAttribute("aria-expanded", "false");
   await expect(navMenu).toHaveJSProperty("inert", true);
 
-  await page.evaluate(() => window.scrollTo(0, 300));
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 300);
+  });
   const scrollYBeforeOpening = await page.evaluate(() => window.scrollY);
 
   await menuButton.click();
