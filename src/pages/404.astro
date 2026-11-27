@@ -1,0 +1,49 @@
+---
+/*Astro Components*/
+import { Image } from "astro:assets";
+/*Components*/
+import Layout from "../layout/Layout.astro";
+/*Image*/
+import Cat404 from "../assets/images/cat-404.svg";
+---
+
+<Layout logoOnlyHeader>
+  <section>
+    <div class="flex flex-col gap-5 items-center">
+      <Image src={Cat404} alt="" quality={80} priority />
+      <h1 class="clamp-[text,1.5rem,2.2rem] font-bold">
+        Ops! A página não foi encontrada...
+      </h1>
+      <a
+        href="/"
+        aria-label="Voltar para o início"
+        class="btn-home flex justify-center items-center h-15 clamp-[w,15rem,25rem] text-white font-semibold clamp-[text,1rem,1.2rem] bg-orange-theme rounded-lg"
+      >
+        Voltar
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .btn-home {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-home:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-home:active {
+    transform: scale(0.95);
+  }
+</style>
