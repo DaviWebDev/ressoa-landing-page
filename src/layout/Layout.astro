@@ -5,9 +5,15 @@ import "../styles/global.css";
 
 interface Props {
   logoOnlyHeader?: boolean;
+  title?: string;
+  description?: string;
 }
 
-const { logoOnlyHeader = false } = Astro.props;
+const {
+  logoOnlyHeader = false,
+  title = "Ressoa",
+  description = "Projetos de acústica que aproximam pessoas e reduzem o ruído sem alterar a personalidade da arquitetura. Soluções para casas, escritórios e restaurantes.",
+} = Astro.props;
 const canonicalPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonicalUrl = new URL(canonicalPath, Astro.site).href;
 ---
@@ -47,11 +53,7 @@ const canonicalUrl = new URL(canonicalPath, Astro.site).href;
       href="/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <SEO
-      title="Ressoa"
-      description="Ressoa, projetos de acústica onde seu conforto vem em primeiro "
-      canonical={canonicalUrl}
-    />
+    <SEO title={title} description={description} canonical={canonicalUrl} />
   </head>
   <body>
     <Header logoOnly={logoOnlyHeader} />

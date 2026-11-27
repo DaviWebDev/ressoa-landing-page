@@ -21,7 +21,11 @@ export const footerData: Data[] = [
     href: "#contato",
   },
   {
-    label: "Privacidade",
-    href: "/privacidade",
+    label: "Política de Privacidade",
+    href: "/privacy-policy",
+  },
+  {
+    label: "Termos de Uso",
+    href: "/terms-of-use",
   },
 ];

@@ -9,7 +9,9 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   security: {
-    csp: true,
+    csp: {
+      directives: ["form-action 'none'"],
+    },
   },
   server: {
     host: true,

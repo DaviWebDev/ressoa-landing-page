@@ -1,6 +1,12 @@
 ---
 import Logo from "../../assets/images/ressoa-logo.svg";
 import { footerData } from "../../data/footer.ts";
+
+const isHomePage = Astro.url.pathname === "/";
+const links = footerData.map((item) => ({
+  ...item,
+  href: isHomePage || item.href.startsWith("/") ? item.href : `/${item.href}`,
+}));
 ---
 
 <footer class="flex justify-center py-18 px-4 text-white bg-primary md:px-12 3xl:px-0">
@@ -17,7 +23,7 @@ import { footerData } from "../../data/footer.ts";
       </div>
       <nav>
         <ul class="flex flex-col gap-5 sm:flex-row">
-          {footerData.map(({ label, href }) => (
+          {links.map(({ label, href }) => (
             <li>
               <a href={href}>{label}</a>
             </li>
