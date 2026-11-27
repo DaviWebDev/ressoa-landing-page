@@ -7,6 +7,12 @@ import NavDesktop from "../ui/header/NavDesktop.astro";
 /*Images*/
 import Logo from "../../assets/images/ressoa-logo.svg";
 
+interface Props {
+  logoOnly?: boolean;
+}
+
+const { logoOnly = false } = Astro.props;
+
 const navItems = [
   {
     num: 1,
@@ -33,31 +39,37 @@ const navItems = [
 
 <header class="header flex justify-center sticky top-0 z-101 w-full h-25">
   <div class="header__inner flex items-center justify-between w-full max-w-400">
-    <a href="/" aria-label="Logo ressoa">
+    <a href="/" aria-label={logoOnly ? "Voltar para o início" : "Logo ressoa"}>
       <Logo width="145" height="45" />
     </a>
-    <NavDesktop item={navItems} />
-    <div class="header__actions flex gap-5">
-      <a href="#contato" class="header__actions-contact" data-js="contact-link">
-        Vamos conversar <Icon name="arrow" class="text-lg" />
-      </a>
-      <button
-        type="button"
-        aria-expanded="false"
-        aria-label="Abrir menu de navegação"
-        aria-controls="primary-navigation"
-        class="flex items-center gap-3 min-w-26 p-3 font-semibold border border-light-gray rounded-md cursor-pointer lg:hidden"
-        data-open="false"
-        data-js="toggle-menu"
-      >
-        <span class="menu-label" aria-hidden="true">
-          <span class="menu-label__closed">Menu</span>
-          <span class="menu-label__open">Fechar</span>
-        </span>
-        <span class="hamburguer-menu__bar" aria-hidden="true"></span>
-      </button>
-    </div>
-    <NavMobile item={navItems} />
+    {!logoOnly && <NavDesktop item={navItems} />}
+    {!logoOnly && (
+      <div class="header__actions flex gap-5">
+        <a
+          href="#contato"
+          class="header__actions-contact"
+          data-js="contact-link"
+        >
+          Vamos conversar <Icon name="arrow" class="text-lg" />
+        </a>
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-label="Abrir menu de navegação"
+          aria-controls="primary-navigation"
+          class="flex items-center gap-3 min-w-26 p-3 font-semibold border border-light-gray rounded-md cursor-pointer lg:hidden"
+          data-open="false"
+          data-js="toggle-menu"
+        >
+          <span class="menu-label" aria-hidden="true">
+            <span class="menu-label__closed">Menu</span>
+            <span class="menu-label__open">Fechar</span>
+          </span>
+          <span class="hamburguer-menu__bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    )}
+    {!logoOnly && <NavMobile item={navItems} />}
   </div>
 </header>
 
