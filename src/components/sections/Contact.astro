@@ -1,0 +1,166 @@
+<section class="flex justify-center px-4 py-20 bg-orange-theme md:px-12 3xl:px-0">
+  <div class="flex flex-col gap-10 w-full max-w-400 lg:flex-row lg:justify-between">
+    <header class="flex flex-col gap-5 max-w-90 text-white">
+      <div class="flex flex-col gap-8 pb-5 border-b border-b-[#D28670]">
+        <p class="text-base font-semibold">05 / VAMOS ENCONTRAR O SEU TOM</p>
+        <h2 class="clamp-[text,2rem,2.8rem] font-medium leading-10">
+          Como você quer se sentir aí?
+        </h2>
+        <p>
+          Este é um projeto conceitual criado para portfólio. A ressoa é uma
+          marca fictícia e não oferece atendimento ou serviços reais.
+        </p>
+      </div>
+      <p class="text-lg font-semibold">oi@ressoa.example</p>
+    </header>
+    <form
+      class="flex flex-col gap-5 py-7 px-5 bg-white rounded-2xl w-full max-w-185 md:px-10 md:py-10"
+      data-js="form"
+      novalidate
+    >
+      <h3 class="clamp-[text,1.5rem,2.2rem] font-medium">
+        Formulário demonstrativo
+      </h3>
+      <p class="clamp-[text,0.9rem,1.1rem]">
+        Nenhum dado é coletado, armazenado ou enviado por este formulário.
+      </p>
+      <div class="flex flex-col gap-5 sm:flex-row">
+        <div class="flex flex-col gap-2 w-full">
+          <label for="name">Seu nome:</label>
+          <input
+            type="text"
+            id="name"
+            data-js="name-raw"
+            placeholder="Como podemos chamar você?"
+            autocomplete="username"
+            required
+          />
+          <p data-js="msg-name"></p>
+        </div>
+        <div class="flex flex-col gap-2 w-full">
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            id="email"
+            data-js="email-raw"
+            placeholder="voce@exemplo.com"
+            autocomplete="email"
+            required
+          />
+          <p data-js="msg-email"></p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <p>Que espaço você quer transformar?</p>
+        <div class="option-group" data-js="radio-options">
+          <input type="radio" name="option" id="home" />
+          <label for="home">Casa</label>
+          <input type="radio" name="option" id="business" />
+          <label for="business">Negócios</label>
+          <input type="radio" name="option" id="other" />
+          <label for="other">Outro</label>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <label for="details">O que você tem em mente?</label>
+        <textarea
+          id="details"
+          placeholder="O eco da sala, o barulho do salão, um novo projeto…"
+          class="h-35 p-5 border border-pewter-green/50 rounded-lg resize-none"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="p-5 font-semibold bg-pale-gray border border-pewter-green rounded-lg cursor-pointer"
+      >
+        Enviar
+      </button>
+      <p data-js="msg-general"></p>
+      <p class="text-pewter-green/75">
+        Não insira informações pessoais. Nenhuma mensagem será enviada.
+      </p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .option-group {
+    display: flex;
+    gap: clamp(0.3rem, 1vw, 5rem);
+  }
+  .option-group input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .option-group label {
+    padding: 0.75rem clamp(0.5rem, 5vw, 1rem);
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .option-group label:hover {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
+  .option-group input[type="radio"]:checked + label {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
+  .option-group input[type="radio"]:focus-visible + label {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  h3 ~ p,
+  label,
+  form > div:nth-of-type(2) > p {
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    padding: 1rem;
+    border: 1px solid rgb(92, 98, 89, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  button[type="submit"] {
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
+  .error {
+    font-weight: 500;
+    color: red;
+  }
+
+  .alert {
+    font-weight: 500;
+    color: #92400e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .option-group label {
+      transition: none;
+    }
+  }
+</style>
+
+<script src="../../scripts/contact.ts"></script>
