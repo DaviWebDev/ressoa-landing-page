@@ -1,0 +1,439 @@
+---
+import Layout from "../layout/Layout.astro";
+import Footer from "../components/layout/footer.astro";
+
+const effectiveDate = "27 de novembro de 2026";
+---
+
+<Layout
+  title="Política de Privacidade | Ressoa"
+  description="Saiba como os dados relacionados à navegação neste projeto de portfólio são tratados."
+>
+  <article class="flex justify-center px-4 py-16 text-primary md:px-12 md:py-20 3xl:px-0">
+    <div class="flex w-full max-w-220 flex-col gap-10">
+      <header class="flex flex-col gap-5 border-b border-pewter-green/25 pb-8">
+        <p class="font-semibold text-orange-theme">DOCUMENTO LEGAL</p>
+        <h1 class="clamp-[text,2.25rem,3.75rem] font-medium leading-tight">
+          Política de Privacidade
+        </h1>
+        <p class="text-pewter-green">
+          Conheça as práticas de privacidade relacionadas à navegação neste
+          site. Última atualização: {effectiveDate}.
+        </p>
+      </header>
+
+      <aside
+        class="rounded-xl border border-champagne bg-off-white px-5 py-5 leading-relaxed md:px-8"
+        aria-label="Aviso sobre a natureza do projeto"
+      >
+        <strong>Projeto conceitual:</strong> a ressoa é uma marca fictícia
+        criada para fins de portfólio. O site não oferece serviços reais. O
+        formulário é demonstrativo e não envia mensagens. Não insira dados
+        pessoais reais.
+      </aside>
+
+      <nav
+        class="rounded-xl border border-pewter-green/25 px-5 py-6 md:px-8"
+        aria-label="Índice da Política de Privacidade"
+      >
+        <h2 class="mb-4 text-xl font-semibold">Nesta política</h2>
+        <ol class="grid gap-2 md:grid-cols-2">
+          <li>
+            <a href="#projeto">1. Sobre o projeto</a>
+          </li>
+          <li>
+            <a href="#dados">2. Coleta e tratamento de dados</a>
+          </li>
+          <li>
+            <a href="#hospedagem">3. Hospedagem e dados de navegação</a>
+          </li>
+          <li>
+            <a href="#finalidades">4. Finalidades e bases legais</a>
+          </li>
+          <li>
+            <a href="#cookies">5. Cookies e rastreamento</a>
+          </li>
+          <li>
+            <a href="#cache">6. Cache do navegador</a>
+          </li>
+          <li>
+            <a href="#compartilhamento">
+              7. Compartilhamento e tratamento internacional
+            </a>
+          </li>
+          <li>
+            <a href="#retencao">8. Armazenamento, retenção e eliminação</a>
+          </li>
+          <li>
+            <a href="#seguranca">9. Segurança da informação</a>
+          </li>
+          <li>
+            <a href="#menores">10. Dados de crianças e adolescentes</a>
+          </li>
+          <li>
+            <a href="#direitos">11. Direitos dos titulares</a>
+          </li>
+          <li>
+            <a href="#links">12. Links externos</a>
+          </li>
+          <li>
+            <a href="#responsavel">13. Responsável e contato</a>
+          </li>
+          <li>
+            <a href="#alteracoes">14. Alterações nesta política</a>
+          </li>
+        </ol>
+      </nav>
+
+      <section id="projeto" class="legal-section">
+        <h2>1. Sobre o projeto</h2>
+        <p>
+          A ressoa é uma marca fictícia desenvolvida para fins de portfólio,
+          demonstração técnica e apresentação de competências em design e
+          desenvolvimento web.
+        </p>
+        <p>
+          O site não representa uma empresa em atividade, não comercializa
+          produtos, não realiza transações financeiras e não oferece serviços
+          reais de arquitetura ou consultoria acústica.
+        </p>
+      </section>
+
+      <section id="dados" class="legal-section">
+        <h2>2. Coleta e tratamento de dados pessoais</h2>
+        <p>
+          O site não possui sistemas de cadastro, autenticação, pagamento ou
+          bancos de dados destinados ao armazenamento de informações dos
+          visitantes.
+        </p>
+        <p>
+          O formulário de contato é demonstrativo e permite preencher nome,
+          e-mail, tipo de ambiente e uma descrição. A validação acontece
+          localmente no navegador; não há integração com APIs, bancos de dados
+          ou serviços de envio de mensagens. O script cancela o envio do
+          formulário quando está ativo.
+        </p>
+        <p>
+          Se o JavaScript estiver indisponível, o navegador poderá tentar enviar
+          uma requisição à própria página. Os campos de nome, e-mail e descrição
+          não são enviados por essa submissão HTML. Por precaução, use apenas
+          informações fictícias e evite dados pessoais, confidenciais ou
+          sensíveis.
+        </p>
+        <p>
+          O preenchimento do formulário é facultativo e não é necessário para
+          acessar o conteúdo do site.
+        </p>
+      </section>
+
+      <section id="hospedagem" class="legal-section">
+        <h2>3. Hospedagem e dados de navegação</h2>
+        <p>
+          Este site está hospedado na Vercel e é disponibilizado por meio de
+          arquivos estáticos. Para entregar e proteger o site, a infraestrutura
+          de hospedagem poderá processar informações técnicas relacionadas ao
+          acesso, como:
+        </p>
+        <ul>
+          <li>endereço IP e informações de rede;</li>
+          <li>localização aproximada derivada do endereço IP;</li>
+          <li>
+            informações sobre navegador, dispositivo e sistema operacional;
+          </li>
+          <li>data, horário e recursos solicitados;</li>
+          <li>registros técnicos de acesso, funcionamento e erros.</li>
+        </ul>
+        <p>
+          O projeto não utiliza esses dados para publicidade personalizada,
+          criação de perfis comportamentais ou comercialização de informações
+          pessoais. O tratamento pela plataforma de hospedagem também está
+          sujeito às suas próprias condições e práticas de privacidade. Consulte
+          a
+          <a class="legal-link" href="https://vercel.com/legal/privacy-notice">
+            Política de Privacidade da Vercel
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="finalidades" class="legal-section">
+        <h2>4. Finalidades e bases legais</h2>
+        <p>
+          Quando houver tratamento de dados pessoais sob responsabilidade do
+          administrador do site, as finalidades e bases legais da LGPD poderão
+          incluir:
+        </p>
+        <ul>
+          <li>
+            disponibilização, manutenção e funcionamento do site, e segurança da
+            infraestrutura: legítimo interesse, conforme o art. 7º, inciso IX;
+          </li>
+          <li>
+            cumprimento de obrigações legais ou regulamentares: art. 7º, inciso
+            II;
+          </li>
+          <li>
+            exercício regular de direitos em processos judiciais,
+            administrativos ou arbitrais: art. 7º, inciso VI.
+          </li>
+        </ul>
+        <p>
+          O legítimo interesse deve observar a necessidade, a proporcionalidade
+          e os direitos e as legítimas expectativas dos titulares. O projeto não
+          realiza rastreamento publicitário nem usa a navegação como
+          consentimento genérico para o tratamento de dados.
+        </p>
+      </section>
+
+      <section id="cookies" class="legal-section">
+        <h2>5. Cookies e rastreamento</h2>
+        <p>A aplicação não implementa:</p>
+        <ul>
+          <li>cookies próprios;</li>
+          <li>
+            ferramentas de análise de audiência ou pixels de rastreamento;
+          </li>
+          <li>publicidade personalizada ou perfilamento comportamental;</li>
+          <li>
+            armazenamento de informações em LocalStorage, SessionStorage ou
+            IndexedDB.
+          </li>
+        </ul>
+        <p>
+          Fontes, imagens, ícones e demais recursos visuais são disponibilizados
+          pela própria infraestrutura do site, sem depender de serviços externos
+          para seu carregamento. Eventuais mecanismos técnicos da hospedagem
+          estão sujeitos às configurações e práticas da Vercel.
+        </p>
+      </section>
+
+      <section id="cache" class="legal-section">
+        <h2>6. Cache do navegador</h2>
+        <p>
+          O site usa cache HTTP para otimizar o carregamento de recursos
+          estáticos, como arquivos CSS, JavaScript, fontes e imagens. Recursos
+          versionados podem ser mantidos em cache por até um ano, conforme as
+          configurações de hospedagem e o comportamento do navegador.
+        </p>
+        <p>
+          O cache serve para melhorar o desempenho e não é usado pela aplicação
+          para identificar visitantes, guardar respostas do formulário ou
+          rastrear comportamentos. Os arquivos em cache podem ser removidos nas
+          configurações do navegador.
+        </p>
+      </section>
+
+      <section id="compartilhamento" class="legal-section">
+        <h2>7. Compartilhamento e tratamento internacional</h2>
+        <p>
+          O projeto não vende nem compartilha dados pessoais para fins
+          publicitários. Informações técnicas relacionadas à navegação poderão
+          ser processadas pela Vercel e pelos prestadores envolvidos na operação
+          de sua infraestrutura.
+        </p>
+        <p>
+          Em razão da natureza internacional da hospedagem, informações técnicas
+          poderão ser processadas fora do Brasil. Para conhecer as práticas da
+          plataforma, consulte a
+          <a class="legal-link" href="https://vercel.com/legal/privacy-notice">
+            Política de Privacidade da Vercel
+          </a>
+          .
+        </p>
+        <p>
+          Informações poderão ser fornecidas a autoridades quando necessário
+          para cumprir obrigações legais ou determinações juridicamente válidas.
+          Eventuais transferências internacionais sob responsabilidade do
+          administrador deverão observar a LGPD e a regulamentação aplicável.
+        </p>
+      </section>
+
+      <section id="retencao" class="legal-section">
+        <h2>8. Armazenamento, retenção e eliminação</h2>
+        <p>
+          O projeto não mantém banco de dados para armazenar as informações
+          preenchidas no formulário demonstrativo.
+        </p>
+        <p>
+          A retenção de registros técnicos pela hospedagem depende dos serviços
+          e configurações aplicáveis e das obrigações da plataforma. Consulte a
+          <a class="legal-link" href="https://vercel.com/legal/privacy-notice">
+            Política de Privacidade da Vercel
+          </a>
+          para mais informações.
+        </p>
+        <p>
+          Quando aplicável, dados pessoais tratados sob responsabilidade do
+          administrador deverão ser eliminados ou anonimizados quando a
+          finalidade for encerrada, ressalvadas as hipóteses legais de
+          conservação.
+        </p>
+      </section>
+
+      <section id="seguranca" class="legal-section">
+        <h2>9. Segurança da informação</h2>
+        <p>
+          O projeto configura medidas técnicas compatíveis com sua arquitetura,
+          como conexão HTTPS, políticas de segurança de conteúdo e cabeçalhos
+          que restringem incorporação em páginas externas, acesso a recursos do
+          dispositivo e envio de informações de referência. O formulário valida
+          os campos localmente e não possui serviço de recebimento de mensagens.
+        </p>
+        <p>
+          Essas medidas buscam reduzir riscos, mas nenhum ambiente digital está
+          completamente livre de falhas ou vulnerabilidades. Se ocorrer um
+          incidente envolvendo dados pessoais sob responsabilidade do
+          administrador que possa acarretar risco ou dano relevante, serão
+          adotadas as providências legalmente aplicáveis.
+        </p>
+      </section>
+
+      <section id="menores" class="legal-section">
+        <h2>10. Dados de crianças e adolescentes</h2>
+        <p>
+          O site não é direcionado especificamente a crianças ou adolescentes e
+          não possui funcionalidades destinadas à coleta de seus dados pessoais.
+          Eventual tratamento deverá observar o melhor interesse, conforme o
+          art. 14 da LGPD.
+        </p>
+        <p>
+          Visitantes não devem inserir informações pessoais reais no formulário
+          demonstrativo.
+        </p>
+      </section>
+
+      <section id="direitos" class="legal-section">
+        <h2>11. Direitos dos titulares</h2>
+        <p>Nos termos da LGPD, titulares podem solicitar, quando aplicável:</p>
+        <ul>
+          <li>confirmação da existência de tratamento e acesso aos dados;</li>
+          <li>correção de dados incompletos, inexatos ou desatualizados;</li>
+          <li>
+            anonimização, bloqueio ou eliminação de dados desnecessários,
+            excessivos ou tratados irregularmente;
+          </li>
+          <li>
+            portabilidade, observados os requisitos legais e regulamentares;
+          </li>
+          <li>
+            eliminação de dados tratados com consentimento, ressalvadas as
+            hipóteses legais de conservação;
+          </li>
+          <li>
+            informações sobre compartilhamento, consentimento e sua revogação,
+            quando aplicável;
+          </li>
+          <li>oposição ao tratamento em desconformidade com a legislação;</li>
+          <li>
+            revisão de decisões exclusivamente automatizadas que afetem seus
+            interesses, quando aplicável.
+          </li>
+        </ul>
+        <p>
+          O projeto não implementa decisões automatizadas para avaliar ou
+          classificar visitantes. Para informações sobre os direitos dos
+          titulares, consulte o
+          <a
+            class="legal-link"
+            href="https://www.gov.br/anpd/pt-br/canais_atendimento/cidadao-titular-de-dados/denuncia-peticao-de-titular-referente-lgpd"
+          >
+            site da ANPD
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="links" class="legal-section">
+        <h2>12. Links externos</h2>
+        <p>
+          Este site contém links para documentos e serviços externos. Ao
+          acessá-los, o visitante estará sujeito às práticas de privacidade dos
+          respectivos serviços. A inclusão de um link não envia o conteúdo do
+          formulário demonstrativo ao destino.
+        </p>
+      </section>
+
+      <section id="responsavel" class="legal-section">
+        <h2>13. Responsável e contato</h2>
+        <p>
+          A Ressoa é uma marca fictícia e este projeto pessoal é mantido por seu
+          desenvolvedor. Não há empresa responsável pela marca nem canal próprio
+          de atendimento ou endereço de e-mail para solicitações de privacidade.
+          O formulário demonstrativo não recebe nem encaminha mensagens.
+        </p>
+        <p>
+          O endereço oi@ressoa.example exibido no site é fictício e não deve ser
+          usado para contato. O código-fonte está disponível no
+          <a
+            class="legal-link"
+            href="https://github.com/DaviWebDev/ressoa-landing-page"
+          >
+            repositório do projeto
+          </a>
+          .
+        </p>
+        <p>
+          Para informações sobre o tratamento realizado pela infraestrutura de
+          hospedagem, consulte a
+          <a class="legal-link" href="https://vercel.com/legal/privacy-notice">
+            Política de Privacidade da Vercel
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="alteracoes" class="legal-section">
+        <h2>14. Alterações nesta política</h2>
+        <p>
+          Esta política poderá ser atualizada quando houver mudanças nas
+          funcionalidades do site, na hospedagem, nas práticas de tratamento ou
+          na legislação aplicável. A versão vigente ficará disponível nesta
+          página, com a data da última atualização.
+        </p>
+      </section>
+
+      <aside class="rounded-xl border border-champagne bg-off-white px-5 py-5 leading-relaxed md:px-8">
+        <strong>Aviso:</strong> este texto não foi redigido nem revisado por
+        advogado e não constitui parecer jurídico ou aconselhamento
+        profissional.
+      </aside>
+    </div>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.75;
+  }
+
+  .legal-section h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .legal-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+
+  .legal-link,
+  nav a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .legal-link:hover,
+  nav a:hover {
+    color: var(--color-orange-theme);
+  }
+</style>

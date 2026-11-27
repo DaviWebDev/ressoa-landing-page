@@ -1,0 +1,250 @@
+---
+import Layout from "../layout/Layout.astro";
+import Footer from "../components/layout/footer.astro";
+
+const effectiveDate = "27 de novembro de 2026";
+---
+
+<Layout
+  title="Termos de Uso | Ressoa"
+  description="Conheça as condições de utilização deste projeto conceitual de portfólio da Ressoa."
+>
+  <article class="flex justify-center px-4 py-16 text-primary md:px-12 md:py-20 3xl:px-0">
+    <div class="flex w-full max-w-220 flex-col gap-10">
+      <header class="flex flex-col gap-5 border-b border-pewter-green/25 pb-8">
+        <p class="font-semibold text-orange-theme">DOCUMENTO LEGAL</p>
+        <h1 class="clamp-[text,2.25rem,3.75rem] font-medium leading-tight">
+          Termos de Uso
+        </h1>
+        <p class="text-pewter-green">
+          Condições de utilização do site da ressoa. Última atualização:
+          {effectiveDate}.
+        </p>
+      </header>
+
+      <aside
+        class="rounded-xl border border-champagne bg-off-white px-5 py-5 leading-relaxed md:px-8"
+        aria-label="Aviso sobre a natureza do projeto"
+      >
+        <strong>Projeto conceitual:</strong> a ressoa é uma marca fictícia
+        criada para fins de portfólio. Os serviços e informações apresentados
+        são ilustrativos e não representam uma oferta comercial.
+      </aside>
+
+      <p class="leading-relaxed">
+        Estes Termos de Uso estabelecem as condições de utilização do site da
+        ressoa, disponível em
+        <a class="legal-link" href="https://ressoa-landing-page.vercel.app/">
+          ressoa-landing-page.vercel.app
+        </a>
+        .
+      </p>
+
+      <nav
+        class="rounded-xl border border-pewter-green/25 px-5 py-6 md:px-8"
+        aria-label="Índice dos Termos de Uso"
+      >
+        <h2 class="mb-4 text-xl font-semibold">Neste documento</h2>
+        <ol class="grid gap-2 md:grid-cols-2">
+          <li>
+            <a href="#projeto">1. Natureza e finalidade do projeto</a>
+          </li>
+          <li>
+            <a href="#utilizacao">2. Utilização do site</a>
+          </li>
+          <li>
+            <a href="#formulario">3. Formulário demonstrativo</a>
+          </li>
+          <li>
+            <a href="#propriedade">4. Propriedade intelectual</a>
+          </li>
+          <li>
+            <a href="#disponibilidade">5. Disponibilidade e responsabilidade</a>
+          </li>
+          <li>
+            <a href="#links">6. Links externos</a>
+          </li>
+          <li>
+            <a href="#privacidade">7. Privacidade e proteção de dados</a>
+          </li>
+          <li>
+            <a href="#alteracoes">8. Alterações destes termos</a>
+          </li>
+          <li>
+            <a href="#legislacao">9. Legislação aplicável</a>
+          </li>
+        </ol>
+      </nav>
+
+      <section id="projeto" class="legal-section">
+        <h2>1. Natureza e finalidade do projeto</h2>
+        <p>
+          A ressoa é uma marca fictícia desenvolvida para fins de portfólio,
+          demonstração técnica e apresentação de competências em design e
+          desenvolvimento web.
+        </p>
+        <p>
+          Os projetos, serviços e informações apresentados possuem finalidade
+          ilustrativa e não constituem ofertas comerciais, propostas contratuais
+          ou serviços profissionais reais de arquitetura ou consultoria
+          acústica.
+        </p>
+      </section>
+
+      <section id="utilizacao" class="legal-section">
+        <h2>2. Utilização do site</h2>
+        <p>
+          O acesso ao conteúdo é gratuito e não exige cadastro ou contratação de
+          serviços.
+        </p>
+        <p>
+          O visitante deverá utilizar o site de maneira lícita, respeitando a
+          legislação aplicável e abstendo-se de atividades que possam
+          comprometer sua segurança, integridade ou disponibilidade.
+        </p>
+      </section>
+
+      <section id="formulario" class="legal-section">
+        <h2>3. Formulário demonstrativo</h2>
+        <p>
+          O formulário disponível no site possui finalidade exclusivamente
+          demonstrativa e não está integrado a serviços de recebimento de
+          mensagens.
+        </p>
+        <p>
+          O preenchimento de seus campos não constitui solicitação de orçamento,
+          contratação de serviços ou estabelecimento de relação comercial.
+        </p>
+        <p>
+          Recomenda-se utilizar exclusivamente informações fictícias, evitando a
+          inserção de dados pessoais, sensíveis ou confidenciais.
+        </p>
+      </section>
+
+      <section id="propriedade" class="legal-section">
+        <h2>4. Propriedade intelectual</h2>
+        <p>
+          Os elementos originais do projeto, incluindo sua identidade visual,
+          composição gráfica, textos, interfaces e código-fonte, estão sujeitos
+          à legislação aplicável de propriedade intelectual.
+        </p>
+        <p>
+          Recursos de terceiros permanecem sujeitos aos direitos e às
+          respectivas condições de licenciamento de seus titulares.
+        </p>
+        <p>
+          A disponibilização pública do código-fonte não implica autorização
+          irrestrita para sua reprodução, modificação ou distribuição. Sua
+          utilização deverá observar as licenças aplicáveis e as permissões
+          concedidas pelos respectivos titulares.
+        </p>
+        <p>
+          O código-fonte está disponível no
+          <a
+            class="legal-link"
+            href="https://github.com/DaviWebDev/ressoa-landing-page"
+          >
+            repositório do projeto
+          </a>
+          .
+        </p>
+      </section>
+
+      <section id="disponibilidade" class="legal-section">
+        <h2>5. Disponibilidade e responsabilidade</h2>
+        <p>
+          Por se tratar de um projeto demonstrativo, o site poderá passar por
+          alterações, atualizações, interrupções temporárias ou descontinuação.
+        </p>
+        <p>
+          Embora sejam adotadas boas práticas de desenvolvimento e segurança,
+          não é possível garantir disponibilidade contínua ou ausência absoluta
+          de erros e vulnerabilidades.
+        </p>
+        <p>
+          O conteúdo apresentado não substitui orientação técnica ou
+          profissional especializada.
+        </p>
+        <p>
+          Nenhuma disposição destes termos exclui ou limita responsabilidades
+          que não possam ser afastadas pela legislação aplicável.
+        </p>
+      </section>
+
+      <section id="links" class="legal-section">
+        <h2>6. Links externos</h2>
+        <p>
+          O site poderá disponibilizar links para recursos e documentos
+          externos. A utilização desses serviços está sujeita às condições e
+          políticas estabelecidas por seus respectivos responsáveis.
+        </p>
+      </section>
+
+      <section id="privacidade" class="legal-section">
+        <h2>7. Privacidade e proteção de dados</h2>
+        <p>
+          As informações relacionadas ao tratamento de dados pessoais, à
+          hospedagem e às tecnologias utilizadas estão descritas na
+          <a class="legal-link" href="/privacy-policy">
+            Política de Privacidade
+          </a>
+          do projeto.
+        </p>
+      </section>
+
+      <section id="alteracoes" class="legal-section">
+        <h2>8. Alterações destes termos</h2>
+        <p>
+          Estes Termos de Uso poderão ser atualizados para refletir mudanças nas
+          funcionalidades, na finalidade do projeto ou na legislação aplicável.
+          A versão vigente será disponibilizada nesta página, acompanhada da
+          data de sua última atualização.
+        </p>
+      </section>
+
+      <section id="legislacao" class="legal-section">
+        <h2>9. Legislação aplicável</h2>
+        <p>
+          Estes Termos de Uso são regidos pela legislação brasileira,
+          respeitados os direitos e as garantias legalmente assegurados aos
+          visitantes.
+        </p>
+      </section>
+
+      <aside class="rounded-xl border border-champagne bg-off-white px-5 py-5 leading-relaxed md:px-8">
+        <strong>Aviso:</strong> este texto não foi redigido nem revisado por
+        advogado e não constitui parecer jurídico ou aconselhamento
+        profissional.
+      </aside>
+    </div>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.75;
+  }
+
+  .legal-section h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .legal-link,
+  nav a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .legal-link:hover,
+  nav a:hover {
+    color: var(--color-orange-theme);
+  }
+</style>
